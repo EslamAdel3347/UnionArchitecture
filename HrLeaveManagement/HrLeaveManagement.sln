@@ -19,6 +19,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HrLeaveManagement.Domain", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HrLeaveManagement.Application", "HrLeaveManagement.Application\HrLeaveManagement.Application.csproj", "{FE60D29F-3DE4-4D4A-A9CB-DD93D6C3BE15}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HrLeaveManagement.Infrastructure", "HrLeaveManagement.Infrastructure\HrLeaveManagement.Infrastructure.csproj", "{80E7CA02-6F1B-460C-8120-10AF76612A49}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HrLeaveManagement.Presistance", "HrLeaveManagement.Presistance\HrLeaveManagement.Presistance.csproj", "{59BCA283-9469-439F-A21D-072F293FE575}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{FE60D29F-3DE4-4D4A-A9CB-DD93D6C3BE15}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FE60D29F-3DE4-4D4A-A9CB-DD93D6C3BE15}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FE60D29F-3DE4-4D4A-A9CB-DD93D6C3BE15}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80E7CA02-6F1B-460C-8120-10AF76612A49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80E7CA02-6F1B-460C-8120-10AF76612A49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80E7CA02-6F1B-460C-8120-10AF76612A49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80E7CA02-6F1B-460C-8120-10AF76612A49}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59BCA283-9469-439F-A21D-072F293FE575}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59BCA283-9469-439F-A21D-072F293FE575}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59BCA283-9469-439F-A21D-072F293FE575}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59BCA283-9469-439F-A21D-072F293FE575}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +56,8 @@ Global
 		{F155314C-9546-4A9F-8ACA-2B3A30BB5E54} = {F1A9C8DF-D0E3-4A75-B06F-11037754BC4A}
 		{5E286370-C1B5-4EC3-ADB9-6D80B976CC09} = {93032CC0-0238-4240-94B7-CD73D6E0789B}
 		{FE60D29F-3DE4-4D4A-A9CB-DD93D6C3BE15} = {93032CC0-0238-4240-94B7-CD73D6E0789B}
+		{80E7CA02-6F1B-460C-8120-10AF76612A49} = {F155314C-9546-4A9F-8ACA-2B3A30BB5E54}
+		{59BCA283-9469-439F-A21D-072F293FE575} = {F155314C-9546-4A9F-8ACA-2B3A30BB5E54}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {ADD4968E-F7C0-4C2C-A874-8B5B5D69AEFF}
