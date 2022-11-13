@@ -1,4 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using HrLeaveManagement.Application.DTOs;
+using HrLeaveManagement.Application.Features.LeaveTypes.Requests;
+using HrLeaveManagement.Application.Features.LeaveTypes.Requests.Command;
+using MediatR;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,36 +16,57 @@ namespace HrLeaveManagement.Api.Controllers
     [ApiController]
     public class LeaveTypesController : ControllerBase
     {
+        private readonly IMediator _mediator;
+
+        public LeaveTypesController(IMediator mediator)
+        {
+            this._mediator = mediator;
+        }
+
         // GET: api/<LeaveTypesController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public async Task<ActionResult<IEnumerable<LeaveTypeDto>>> Get()
         {
-            return new string[] { "value1", "value2" };
+            var LeaveTypes = await _mediator.Send(new GetLeaveTypeListRequest());
+
+            return Ok(LeaveTypes);
         }
 
         // GET api/<LeaveTypesController>/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public async Task<ActionResult<LeaveTypeDto>> Get(int id)
         {
-            return "value";
+            var LeaveType = await _mediator.Send(new GetLeaveTypeRequest{Id = id});
+            return Ok(LeaveType);
         }
 
         // POST api/<LeaveTypesController>
         [HttpPost]
-        public void Post([FromBody] string value)
+        public async Task<ActionResult> Post([FromBody] CreateLeaveTypeDto CreateleaveTypeDto)
         {
+            var command = new CreateLeaveTypeCommand { CreateLeaveTypeDto = CreateleaveTypeDto };
+            var Response =await  _mediator.Send(command);
+            return Ok(Response);
         }
 
         // PUT api/<LeaveTypesController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<ActionResult> Put([FromBody] LeaveTypeDto leaveType)
         {
+
+            var command = new UpdateLeaveTypeCommand { LeaveTypeDto = leaveType };
+            await _mediator.Send(command);
+            return NoContent();
+
         }
 
         // DELETE api/<LeaveTypesController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
+            var command = new DeleteLeaveTypeCommand { Id = id };
+           await _mediator.Send(command);
+            return NoContent();
         }
     }
 }

@@ -35,7 +35,9 @@ namespace HrLeaveManagement.Api
 
             services.ConfigureApplicationServices();
 
-            services.AddMediatR(typeof(Startup));
+            services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies());
+
+            //services.AddMediatR(typeof(Startup));
 
             // db and depenedcy injection
             services.ConfigurePersistenceServices(Configuration);
