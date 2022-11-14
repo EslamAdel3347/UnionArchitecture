@@ -1,1 +1,2 @@
 # UnionArchitecture
+#apply CQRS ,MediateR
