@@ -9,4 +9,6 @@ namespace HrLeaveManagement.Domain
         public int DefaultDays { get; set; }
         
     }
+
+
 }

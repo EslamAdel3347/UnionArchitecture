@@ -25,7 +25,7 @@ namespace HrLeaveManagement.Api.Controllers
 
         // GET: api/<LeaveRequestController>
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<LeaveRequestDto>>>  Get()
+        public async Task<ActionResult<IEnumerable<DepartmentDto>>>  Get()
         {
             var LeaveRequest =await _mediator.Send(new GetLeaveRequestList());
             return Ok(LeaveRequest);
@@ -33,7 +33,7 @@ namespace HrLeaveManagement.Api.Controllers
 
         // GET api/<LeaveRequestController>/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<LeaveRequestDto>> Get(int id)
+        public async Task<ActionResult<DepartmentDto>> Get(int id)
         {
             var LeaveRequest =await _mediator.Send(new GetLeaveRequest { Id = id });
             return Ok(LeaveRequest);
@@ -41,7 +41,7 @@ namespace HrLeaveManagement.Api.Controllers
 
         // POST api/<LeaveRequestController>
         [HttpPost]
-        public async Task<ActionResult<LeaveRequestDto>> Post([FromBody]  CreateLeaveRequestDto leave)
+        public async Task<ActionResult<DepartmentDto>> Post([FromBody]  CreateLeaveRequestDto leave)
         {
             var Command = new CreateLeaveRequestCommand { CreateLeaveRequestDto = leave };
             var response = await _mediator.Send(Command);

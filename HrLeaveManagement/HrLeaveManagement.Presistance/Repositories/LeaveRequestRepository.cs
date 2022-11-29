@@ -35,4 +35,5 @@ namespace HrLeaveManagement.Presistance.Repositories
             return LeaveReqDet;
         }
     }
+
 }

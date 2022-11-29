@@ -17,4 +17,9 @@
     <ProjectReference Include="..\HrLeaveManagement.Domain\HrLeaveManagement.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="DTOs\Employee\" />
+    <Folder Include="Features\Employee\" />
+  </ItemGroup>
+
 </Project>

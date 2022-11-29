@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using HrLeaveManagement.Application.DTOs;
+using HrLeaveManagement.Application.DTOs.Department;
 using HrLeaveManagement.Application.DTOs.LeaveRequest;
 using HrLeaveManagement.Domain;
 using System;
@@ -12,8 +13,17 @@ namespace HrLeaveManagement.Application.Profiles
     {
         public MappingProfile()
         {
+
+            #region Department Mappings
+            CreateMap<Department, DepartmentRequestDto>().ReverseMap();
+            CreateMap<Department, DepartmentRequestListDto>().ReverseMap();
+            CreateMap<Department, CreateDepartmentRequestDto>().ReverseMap();
+            CreateMap<Department, UpdateDepartmentRequestDto>().ReverseMap();
+
+            #endregion
+
             #region LeaveRequest Mappings
-            CreateMap<LeaveRequest, LeaveRequestDto>().ReverseMap();
+            CreateMap<LeaveRequest, DepartmentDto>().ReverseMap();
             CreateMap<LeaveRequest, LeaveRequestListDto>().ReverseMap();
             CreateMap<LeaveRequest, CreateLeaveRequestDto>().ReverseMap();
             CreateMap<LeaveRequest, UpdateLeaveRequestDto>().ReverseMap();
