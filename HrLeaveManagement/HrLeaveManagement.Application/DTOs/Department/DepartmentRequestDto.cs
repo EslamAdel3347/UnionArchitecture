@@ -1,4 +1,5 @@
 ﻿using HrLeaveManagement.Application.DTOs.Common;
+using HrLeaveManagement.Application.DTOs.Employee;
 using HrLeaveManagement.Domain;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ namespace HrLeaveManagement.Application.DTOs.Department
     {
         public string DepName { get; set; }
         public int DepartmentAddress { get; set; }
-        public virtual ICollection<Employee> Employees { get; set; }
+        public virtual ICollection<EmployeeListRequestDto> Employees { get; set; }
     }
 
 

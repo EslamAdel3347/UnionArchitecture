@@ -18,8 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DTOs\Employee\" />
-    <Folder Include="Features\Employee\" />
+    <Folder Include="Features\Employee\Handlers\Command\" />
   </ItemGroup>
 
 </Project>

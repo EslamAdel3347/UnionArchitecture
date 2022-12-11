@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace HrLeaveManagement.Presistance.Migrations
 {
-    public partial class EmpDep : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -25,6 +25,8 @@ namespace HrLeaveManagement.Presistance.Migrations
                     table.PrimaryKey("PK_Departments", x => x.Id);
                 });
 
+         
+
             migrationBuilder.CreateTable(
                 name: "Employees",
                 columns: table => new
@@ -38,7 +40,7 @@ namespace HrLeaveManagement.Presistance.Migrations
                     EmpName = table.Column<string>(nullable: true),
                     EmpAddress = table.Column<int>(nullable: false),
                     EmpPhone = table.Column<string>(nullable: true),
-                    DepartmentId = table.Column<int>(nullable: true)
+                    DepartmentId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -48,13 +50,18 @@ namespace HrLeaveManagement.Presistance.Migrations
                         column: x => x.DepartmentId,
                         principalTable: "Departments",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
+
+        
+
+          
 
             migrationBuilder.CreateIndex(
                 name: "IX_Employees_DepartmentId",
                 table: "Employees",
                 column: "DepartmentId");
+
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -62,8 +69,11 @@ namespace HrLeaveManagement.Presistance.Migrations
             migrationBuilder.DropTable(
                 name: "Employees");
 
+
             migrationBuilder.DropTable(
                 name: "Departments");
+
+         
         }
     }
 }

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HrLeaveManagement.Presistance.Migrations
 {
     [DbContext(typeof(leaveManagementDbContext))]
-    [Migration("20221121112213_EmpDep")]
-    partial class EmpDep
+    [Migration("20221207091914_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -64,7 +64,7 @@ namespace HrLeaveManagement.Presistance.Migrations
                     b.Property<DateTime>("DataCreated")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("DepartmentId")
+                    b.Property<int>("DepartmentId")
                         .HasColumnType("int");
 
                     b.Property<int>("EmpAddress")
@@ -208,7 +208,9 @@ namespace HrLeaveManagement.Presistance.Migrations
                 {
                     b.HasOne("HrLeaveManagement.Domain.Department", "Department")
                         .WithMany("Employees")
-                        .HasForeignKey("DepartmentId");
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("HrLeaveManagement.Domain.LeaveAllocation", b =>

@@ -25,6 +25,7 @@ namespace HrLeaveManagement.Presistance
             services.AddScoped<ILeaveAllocationRepository, LeaveAllocationRepository>();
 
             services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            services.AddScoped<IEmployeeRepository, EmployeeRepository>();
 
 
             return services;

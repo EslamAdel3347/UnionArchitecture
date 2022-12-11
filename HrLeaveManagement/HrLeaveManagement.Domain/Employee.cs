@@ -1,4 +1,7 @@
 ﻿using HrLeaveManagement.Domain.Common;
+using System;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace HrLeaveManagement.Domain
 {
@@ -10,8 +13,12 @@ namespace HrLeaveManagement.Domain
         public string EmpPhone { get; set; }
 
         
-
+        [Required,ForeignKey("Department")]
+        public int DepartmentId { get; set; }
         public virtual Department Department { get; set; }
+
+        public string EmpType { get; set; }
+
 
     }
 

@@ -62,7 +62,7 @@ namespace HrLeaveManagement.Presistance.Migrations
                     b.Property<DateTime>("DataCreated")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("DepartmentId")
+                    b.Property<int>("DepartmentId")
                         .HasColumnType("int");
 
                     b.Property<int>("EmpAddress")
@@ -72,6 +72,9 @@ namespace HrLeaveManagement.Presistance.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmpPhone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmpType")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("LastModifiedBy")
@@ -206,7 +209,9 @@ namespace HrLeaveManagement.Presistance.Migrations
                 {
                     b.HasOne("HrLeaveManagement.Domain.Department", "Department")
                         .WithMany("Employees")
-                        .HasForeignKey("DepartmentId");
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("HrLeaveManagement.Domain.LeaveAllocation", b =>

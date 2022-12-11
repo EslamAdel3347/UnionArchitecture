@@ -26,7 +26,7 @@ namespace HrLeaveManagement.Api.Controllers
 
         // GET: api/<DepartmentController>
         [HttpGet("{Name}")]
-        public async Task<ActionResult<IEnumerable<DepartmentDto>>> Get(string Name)
+        public async Task<ActionResult<IEnumerable<DepartmentRequestDto>>> Get(string Name)
         {
             var Department = await _mediator.Send(new GetDepartmentList { Name=Name});
             return Ok(Department);
@@ -35,7 +35,7 @@ namespace HrLeaveManagement.Api.Controllers
         // GET api/<DepartmentController>/5
         [HttpGet]
         [Route("SearchDepartment")]
-        public async Task<ActionResult<DepartmentDto>> SearchDepartment(string Name)
+        public async Task<ActionResult<DepartmentRequestDto>> SearchDepartment(string Name)
         {
             var LeaveRequest = await _mediator.Send(new GetDepartment { Name = Name });
             return Ok(LeaveRequest);
@@ -43,7 +43,7 @@ namespace HrLeaveManagement.Api.Controllers
 
         // POST api/<DepartmentController>
         [HttpPost]
-        public async Task<ActionResult<DepartmentDto>> Post([FromBody] CreateDepartmentRequestDto depatment)
+        public async Task<ActionResult<DepartmentRequestDto>> Post([FromBody] CreateDepartmentRequestDto depatment)
         {
             var Command = new CreateDepartmentCommand { CreateDepartmentRequest = depatment };
             var response = await _mediator.Send(Command);

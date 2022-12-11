@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace HrLeaveManagement.Presistance.Migrations
 {
     [DbContext(typeof(leaveManagementDbContext))]
-    [Migration("20221110103655_initialCreation")]
-    partial class initialCreation
+    [Migration("20221207092948_InitialCreate2")]
+    partial class InitialCreate2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,6 +20,77 @@ namespace HrLeaveManagement.Presistance.Migrations
                 .HasAnnotation("ProductVersion", "3.1.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity("HrLeaveManagement.Domain.Department", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DataCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("DepName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("DepartmentAddress")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Departments");
+                });
+
+            modelBuilder.Entity("HrLeaveManagement.Domain.Employee", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("DataCreated")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("EmpAddress")
+                        .HasColumnType("int");
+
+                    b.Property<string>("EmpName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmpPhone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("EmpType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("LastModifiedDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.ToTable("Employees");
+                });
 
             modelBuilder.Entity("HrLeaveManagement.Domain.LeaveAllocation", b =>
                 {
@@ -134,6 +205,15 @@ namespace HrLeaveManagement.Presistance.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("LeaveTypes");
+                });
+
+            modelBuilder.Entity("HrLeaveManagement.Domain.Employee", b =>
+                {
+                    b.HasOne("HrLeaveManagement.Domain.Department", "Department")
+                        .WithMany("Employees")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("HrLeaveManagement.Domain.LeaveAllocation", b =>

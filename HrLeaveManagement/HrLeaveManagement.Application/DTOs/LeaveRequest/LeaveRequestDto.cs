@@ -3,7 +3,7 @@ using System;
 
 namespace HrLeaveManagement.Application.DTOs.LeaveRequest
 {
-    public class DepartmentDto : BaseDto
+    public class LeaveRequestDto : BaseDto
     {
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
